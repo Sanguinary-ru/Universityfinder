@@ -18,7 +18,6 @@ const zoom = ref('18')
 const isLoading = ref(true)
 const error = ref('')
 
-
 onMounted(async () => {
     const aiRequest = axios.post('https://api.mistral.ai/v1/chat/completions',
         {
@@ -63,13 +62,12 @@ onMounted(async () => {
     }
 })
 </script>
-<template class = "glav">
+<template>
 <div class="ocnova">
     <p v-if="isLoading">Загрузка...</p>
     <p v-else-if="error">{{ error }}</p>
     <div v-else class="ocnova" >
-        <ul>
-       <li> <h2 class="main" >{{universityName}}</h2>
+      <h2 class="main" >{{universityName}}</h2>
         <div class="container">
                 <div class=" opis">
                     {{ universityData }}
@@ -83,8 +81,6 @@ onMounted(async () => {
             </div>
 
         </div>
-    </li>
-    </ul>
 </div>
        
     
@@ -95,6 +91,7 @@ onMounted(async () => {
 <style scoped>
 
 .ocnova{
+    height: 100%;
     background-color: #EBF1F4;      
 }
 .container{
@@ -104,6 +101,7 @@ onMounted(async () => {
     justify-content: center;
     align-items: center;
     width: 80%; 
+    height: auto;
     max-width: 1200px; 
     margin: 20px auto; 
     border-radius: 10px; 
@@ -117,14 +115,17 @@ onMounted(async () => {
   margin-bottom: 20px;
 }
 .vmap{
-    height:600px;
     width: 45%;
     background-color: white;
+    overflow: scroll;
+
 }   
 .opis{
-
+overflow: scroll;
 width: 50%; 
   padding: 20px;
   border-radius: 10px;
+  height: auto;
+
 }
 </style>
