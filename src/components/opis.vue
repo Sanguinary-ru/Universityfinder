@@ -63,17 +63,29 @@ onMounted(async () => {
     }
 })
 </script>
-<template>
-    <div>
+<template class = "glav">
+<div class="ocnova">
     <p v-if="isLoading">Загрузка...</p>
     <p v-else-if="error">{{ error }}</p>
-    <div v-else>
-      <p>{{ universityData }}</p>
-      <VMap style="height: 500px;" :center = "center" :zoom="zoom">
-    <VMapOsmTileLayer />
-    <VMapZoomControl />
-  </VMap>
-    </div>
+    <div v-else class="ocnova" >
+        <ul>
+       <li> <h2 class="main" >{{universityName}}</h2>
+        <div class="container">
+                <div class=" opis">
+                    {{ universityData }}
+                    {{ geocodingResponse }}
+                </div>
+             <div class="vmap">
+                <VMap :center = "center" :zoom="zoom">
+                <VMapOsmTileLayer />
+                <VMapZoomControl />
+                </VMap>
+            </div>
+
+        </div>
+    </li>
+    </ul>
+</div>
        
     
     
@@ -82,4 +94,37 @@ onMounted(async () => {
 
 <style scoped>
 
+.ocnova{
+    background-color: #EBF1F4;      
+}
+.container{
+    display: flex;
+    background-color: white;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 80%; 
+    max-width: 1200px; 
+    margin: 20px auto; 
+    border-radius: 10px; 
+    padding: 20px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  
+}
+.main{
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+.vmap{
+    height:600px;
+    width: 45%;
+    background-color: white;
+}   
+.opis{
+
+width: 50%; 
+  padding: 20px;
+  border-radius: 10px;
+}
 </style>
