@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import fivecomponent from './components/fivecomponent.vue';
+import main from './components/main.vue';
 import opis from './components/opis.vue';
 
 const routes = [
-    { path: '/', component: fivecomponent },
+    { path: '/', component: main },
     { path: '/opis/:name', component: opis, name: 'opis'}
 
 ];
